@@ -1,0 +1,28 @@
+{
+  "name": "CoupleJoy",
+  "version": "0.2.0",
+  "description": "Couple watch together room using websockets",
+  "main": "couple.js",
+  "scripts": {
+    "start": "node couple.js"
+  },
+  "dependencies": {
+    "express": "^4.13.3"
+	"ws":"*"
+  },
+  "engines": {
+    "node": "10.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kalyaraju/couplejoy"
+  },
+  "keywords": [
+    "watch together",
+    "couplejoy",
+    "websocket room"
+  ],
+  "author": "Kalyan Raju G",
+ 
+  "license": "MIT"
+}

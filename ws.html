@@ -1,0 +1,1140 @@
+<html>
+    <head>
+        <meta name="theme-color" content="#
+        50a3a2" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel='stylesheet' href='//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'>
+<link rel="stylesheet" href="https://unpkg.com/botui/build/botui.min.css" />
+<link rel="stylesheet" href="https://unpkg.com/botui/build/botui-theme-default.css" />
+<title>CoupleJoy Video Room</title>
+</head>
+<body>
+<style>
+    .inactive { display: none; }
+    .active { display: block; }
+
+
+.video-container{
+ /* position: fixed;*/
+    top: 0px;
+    background-color: #000;
+    width: 100%;
+}
+video {
+    width: 100%;
+    height: 30%;
+    background-color: #000;
+    object-fit: contain;
+}
+button {
+  border: none;
+}
+button:focus {
+  outline: none;
+}
+
+.player-controls {
+  display: none;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background-color: #fff;
+  width: 100%;
+  border: none;
+}
+
+.play-btn {
+  background-color: #22a7f0;
+  color: #fff;
+  font-size: 2em;
+  padding: 10px 10px 10px 15px;
+}
+.play-btn:hover {
+  background-color: #0d80bf;
+  transition: background-color 600ms linear;
+}
+
+.progress {
+  position: absolute;
+  width: 65%;
+  height: 8px;
+  cursor: pointer;
+  background: rgba(0, 0, 0, 0.4);
+  /* fallback */
+  border-radius: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  bottom: 2px;
+  left: 90px;
+}
+
+.full-screen {
+  background-color: transparent;
+  float: right;
+  margin-top: 20px;
+  margin-right: 10px;
+}
+
+.glyphicon-fullscreen {
+  font-size: 1.5em;
+  color: #22a7f0;
+}
+.glyphicon-fullscreen:hover {
+  color: #0d80bf;
+  transition: color 600ms linear;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.clearfix:after, .messages:after {
+  content: "";
+  display: table;
+  clear: both;
+  height: 0;
+  visibility: hidden;
+}
+
+
+
+
+@import url(http://fonts.useso.com/css?family=Source+Sans+Pro:200,300);
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-weight: 300;
+}
+body {
+  font-family: 'Source Sans Pro', sans-serif;
+  color: white;
+  font-weight: 300;
+  background-size: cover;
+}
+body ::-webkit-input-placeholder {
+  /* WebKit browsers */
+  font-family: 'Source Sans Pro', sans-serif;
+  color: white;
+  font-weight: 300;
+}
+body :-moz-placeholder {
+  /* Mozilla Firefox 4 to 18 */
+  font-family: 'Source Sans Pro', sans-serif;
+  color: white;
+  opacity: 1;
+  font-weight: 300;
+}
+body ::-moz-placeholder {
+  /* Mozilla Firefox 19+ */
+  font-family: 'Source Sans Pro', sans-serif;
+  color: white;
+  opacity: 1;
+  font-weight: 300;
+}
+body :-ms-input-placeholder {
+  /* Internet Explorer 10+ */
+  font-family: 'Source Sans Pro', sans-serif;
+  color: white;
+  font-weight: 300;
+}
+.wrapper {
+  background: #335765 ;
+ /* background: -webkit-linear-gradient(top left, #50a3a2 0%, #53e3a6 100%);
+  background: linear-gradient(to bottom right, #50a3a2 0%, #53e3a6 100%);*/
+  opacity: 0.9;
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+
+}
+
+.wrapper.form-success .container h1 {
+  -webkit-transform: translateY(85px);
+      -ms-transform: translateY(85px);
+          transform: translateY(85px);
+}
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 80px 0;
+  height: 400px;
+  text-align: center;
+}
+.container h1 {
+  font-size: 40px;
+  -webkit-transition-duration: 1s;
+          transition-duration: 1s;
+  -webkit-transition-timing-function: ease-in-put;
+          transition-timing-function: ease-in-put;
+  font-weight: 200;
+}
+.form {
+  padding: 20px 0;
+  position: relative;
+  z-index: 2;
+}
+.form input {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  outline: 0;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background-color: rgba(255, 255, 255, 0.2);
+  width: 250px;
+  border-radius: 3px;
+  padding: 10px 15px;
+  margin: 0 auto 10px auto;
+  display: block;
+  text-align: center;
+  font-size: 18px;
+  color: white;
+  -webkit-transition-duration: 0.25s;
+          transition-duration: 0.25s;
+  font-weight: 300;
+}
+.form input:hover {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+.form input:focus {
+  background-color: white;
+  width: 300px;
+  color: #53e3a6;
+}
+.form button {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  outline: 0;
+  background-color: white;
+  border: 0;
+  padding: 10px 15px;
+  color: #53e3a6;
+  border-radius: 3px;
+  width: 250px;
+  cursor: pointer;
+  font-size: 18px;
+  -webkit-transition-duration: 0.25s;
+          transition-duration: 0.25s;
+}
+.form button:hover {
+  background-color: #f5f7f9;
+}
+.bg-bubbles {
+  display:none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+.bg-bubbles li {
+  position: absolute;
+  list-style: none;
+  display: block;
+  width: 40px;
+  height: 40px;
+  bottom: -160px;
+  -webkit-animation: square 25s infinite;
+  animation: square 25s infinite;
+  -webkit-transition-timing-function: linear;
+  transition-timing-function: linear;
+}
+
+.bg-bubbles li:before,
+.bg-bubbles li:after{
+    position: absolute;
+    content: "";
+    left: 50px;
+    top: 0;
+    width: 50px;
+    height: 80px;
+    background: #fc2e5a;
+    -moz-border-radius: 50px 50px 0 0;
+    border-radius: 50px 50px 0 0;
+    -webkit-transform: rotate(-45deg);
+       -moz-transform: rotate(-45deg);
+        -ms-transform: rotate(-45deg);
+         -o-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+    -webkit-transform-origin: 0 100%;
+       -moz-transform-origin: 0 100%;
+        -ms-transform-origin: 0 100%;
+         -o-transform-origin: 0 100%;
+            transform-origin: 0 100%;
+}
+.bg-bubbles li:after{
+    left: 0;
+    -webkit-transform: rotate(45deg);
+       -moz-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+         -o-transform: rotate(45deg);
+            transform: rotate(45deg);
+    -webkit-transform-origin: 100% 100%;
+       -moz-transform-origin: 100% 100%;
+        -ms-transform-origin: 100% 100%;
+         -o-transform-origin: 100% 100%;
+            transform-origin :100% 100%;
+}
+
+
+.bg-bubbles li:nth-child(1) {
+  left: 10%;
+}
+.bg-bubbles li:nth-child(2) {
+  left: 20%;
+  width: 80px;
+  height: 80px;
+  -webkit-animation-delay: 2s;
+          animation-delay: 2s;
+  -webkit-animation-duration: 17s;
+          animation-duration: 17s;
+}
+.bg-bubbles li:nth-child(3) {
+  left: 25%;
+  -webkit-animation-delay: 4s;
+          animation-delay: 4s;
+}
+.bg-bubbles li:nth-child(4) {
+  left: 40%;
+  width: 60px;
+  height: 60px;
+  -webkit-animation-duration: 22s;
+          animation-duration: 22s;
+}
+.bg-bubbles li:nth-child(5) {
+  left: 70%;
+}
+.bg-bubbles li:nth-child(6) {
+  left: 80%;
+  width: 120px;
+  height: 120px;
+  -webkit-animation-delay: 3s;
+          animation-delay: 3s;
+}
+.bg-bubbles li:nth-child(7) {
+  left: 32%;
+  width: 160px;
+  height: 160px;
+  -webkit-animation-delay: 7s;
+          animation-delay: 7s;
+}
+.bg-bubbles li:nth-child(8) {
+  left: 55%;
+  width: 20px;
+  height: 20px;
+  -webkit-animation-delay: 15s;
+          animation-delay: 15s;
+  -webkit-animation-duration: 40s;
+          animation-duration: 40s;
+}
+.bg-bubbles li:nth-child(9) {
+  left: 25%;
+  width: 10px;
+  height: 10px;
+  -webkit-animation-delay: 2s;
+          animation-delay: 2s;
+  -webkit-animation-duration: 40s;
+          animation-duration: 40s;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+.bg-bubbles li:nth-child(10) {
+  left: 90%;
+  width: 160px;
+  height: 160px;
+  -webkit-animation-delay: 11s;
+          animation-delay: 11s;
+}
+@-webkit-keyframes square {
+  0% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  100% {
+    -webkit-transform: translateY(-700px) rotate(600deg);
+            transform: translateY(-700px) rotate(600deg);
+  }
+}
+@keyframes square {
+  0% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  100% {
+    -webkit-transform: translateY(-700px) rotate(600deg);
+            transform: translateY(-700px) rotate(600deg);
+  }
+}
+
+.screen{
+  position: fixed;
+    width: 100%;
+    top:35%;
+    height: 62%;
+    overflow-y: scroll;
+  background-size: cover;
+}
+
+.text-bar{
+position: fixed;
+bottom: 0px;
+width:100%;
+background-color: #f1f1f1;
+}
+
+.text-bar__field{
+
+  float:left;
+  width: 71%;
+  }
+
+.text-bar__field input{width: 100%;
+    margin: 10px;
+    padding: 8px;
+    border-radius: 50px;
+    border: 1px solid #ccc;
+    margin-left: 0px;
+    color:#000;
+    padding-right: 32px;
+    }
+    *:focus {
+    outline: none;
+}
+
+    .text-bar__field input:hover, .text-bar__field input:active{
+      border: none;
+    }
+    .text-bar__thumb{
+      float: left;
+    }
+    .left-btns{
+      font-size: 20px;
+    padding: 10px;
+    color: #2570c3;
+    background-color: #fff;
+    border-radius: 100%;
+    float: left;
+    margin: 5px;
+    }
+    .right-btns{
+      font-size: 20px;
+    padding: 10px;
+    color: #2570c3;
+    background-color: #fff;
+    border-radius: 100%;
+    margin: 5px;
+    }
+    .control-but{
+      float:left;
+    }
+
+    @media screen and (min-width: 320px) {
+      .text-bar__field{width: 68%;}
+   
+}
+
+
+.mbSmilesWrapper{
+  position:relative;
+  display:inline-block;
+  width:100%;
+}
+.botui-message img{
+  background-color: #fff;
+  border-radius: 10px;
+    padding: 5px;
+}
+    .mbSmilesBox{
+      position:absolute;
+      width:290px;
+      background:#f3f3f3;
+      padding:5px;
+      -moz-box-shadow: #666666 1px 1px 6px;
+      -webkit-box-shadow: #666666 1px 1px 6px;
+      margin-top:-5px;
+      z-index:1001;
+
+      bottom: 65px;
+    }
+    span.emoticon{
+      background-color:#f3f3f3;
+      display:block;
+      float:left;
+      width:25px;
+      height:25px;
+      cursor:pointer;
+      border-bottom:1px dotted #ccc;
+      border-right:1px dotted #ccc;
+      padding:3px;
+    }
+    span.emoticon:hover{
+      position:relative;
+      z-index:1;
+      background-color:#fff;
+      -moz-box-shadow: #666666 1px 1px 6px;
+      -webkit-box-shadow: #666666 1px 1px 6px;
+    }
+   
+   .cam{
+    position: absolute;
+    z-index: 999;
+    width: 20%;
+    height: auto;
+    -moz-border-radius: 10%; 
+    -webkit-border-radius: 10%; 
+    border-radius: 10%;
+    object-fit: cover;
+   }
+   
+    span.mbSmilesButton{
+        position:absolute;
+        right:11px;
+        z-index:1000;
+        top: 20px;
+    }
+
+    .topbar{
+      position: fixed;
+    top: 30%;
+    background-color: #337ab7;
+    padding: 10px;
+    z-index: 99;
+    width: 100%;
+}
+    .leave-room{
+      background: #0e4777;
+    border-radius: 100%;
+    padding: 5px;
+    float: right;
+    }
+    .startvideo{
+      background: #0e4777;
+    border-radius: 100%;
+    padding: 5px;
+    float: right;
+    margin-right: 10px
+    }
+
+    video::-webkit-media-controls-fullscreen-button {
+    display: none;
+}
+
+.modal-window {
+  position: fixed;
+  background-color: rgba(255, 255, 255, 0.25);
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 999;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s;
+}
+.modal-window:target {
+  opacity: 1;
+  pointer-events: auto;
+}
+.modal-window > div {
+  width: 95%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 94%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    padding: 0.5em;
+    background: #ffffff;
+    color: #333333;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 9px 2px black;
+}
+.modal-window header {
+  font-weight: bold;
+}
+.modal-window h1 {
+  font-size: 150%;
+  margin: 0 0 15px;
+  color: #333333;
+}
+
+.modal-close {
+  color: #aaa;
+    background-color: #000;
+    /* line-height: 50px; */
+    font-size: 80%;
+    position: absolute;
+    left: -6px;
+    text-align: center;
+    top: -20px;
+    border-radius: 50%;
+    /* width: 70px; */
+    padding: 10px;
+    text-decoration: none;
+}
+.modal-close:hover {
+  color: #000;
+}
+  </style>
+
+
+
+  <div id="registration" class="active" style="visibility:hidden">
+      <div class="wrapper">
+          <div class="container">
+            <h1>CoupleJoy</h1>
+            <div class="form">
+                <p style="visibility: hidden;"> You are going to watch : <span id="vid">couple.mp4</span></p>
+                <input id="name" style="visibility: hidden;" />
+                <p>Enter Room Code</p>
+                <input id="room" />
+
+                              <button style="display: none;"  id="join">Join</button>
+            </div>
+          </div>
+           
+          <ul class="bg-bubbles">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+          </ul>
+        </div>   
+    
+    
+
+  </div>
+  
+  <div id="roomtv" class="inactive">
+      
+      <p style="visibility:hidden;display: none;">Controller: <span id="controller">---</span>
+
+  <div class="topbar">
+      <button id="leave" class="glyphicon 	 glyphicon-remove leave-room" ></button>
+
+    <button  class="glyphicon 	 glyphicon-facetime-video startvideo" style="display: none;" id="start" onclick="start(true)" ></button>
+    <button id="audiotogl" class="	glyphicon glyphicon-subtitles" style="
+    /* float: right; */
+    background: #0e4777;
+    border-radius: 100%;
+    padding: 5px;
+    
+    float: right;
+    margin-right: 10px;
+"></button>
+ <button id="fulltogl" class="	glyphicon glyphicon-fullscreen" style="
+ /* float: right; */
+ background: #0e4777;
+ border-radius: 100%;
+ padding: 5px;
+ float: right;
+ margin-right: 10px;    font-size: 14px;
+    color: #fff;
+"></button>
+
+<a id="browstogl" class="glyphicon glyphicon-globe" href="#" onclick="playexternalurl('https://www.youtube.com/watch?v=KAAje_60UjE')" style="
+/* float: right; */
+background: #0e4777;
+border-radius: 100%;
+padding: 5px;
+display: none;
+float: right;
+margin-right: 10px;    font-size: 14px;
+   color: #fff;
+"></a>
+    <i class="glyphicon glyphicon-facetime-video" style="    padding-right: 5px"></i><span id="roomid"></span>
+    <span id="username" style="visibility:hidden"></span>
+   <!-- <p>Users: <span id="userCount"></span></p>-->
+    <!--  <button id="takeControl">Take Control</button>
+    </p>-->
+    <!--<video id="localVideo" class="cam" muted autoplay ></video>-->
+    <!--<video id="remoteVideo" class="cam"  autoplay ></video>-->
+  </div>
+    <div class="">
+      <div class="">
+        <div class="video-container" id="vidcont">
+        
+        
+          <video id="movie"  controls >
+            <track src="sub.srt" kind="subtitle" srclang="en-US" label="English" />
+
+          </video>
+         
+        </div>
+      </div>
+    </div>
+    
+    <div class="screen">
+        <div id="my-botui-app">
+            <bot-ui></bot-ui>
+          </div>
+        <div class="text-bar">
+            <div class="control-but">
+                <span  id="takeControl" class="glyphicon glyphicon-magnet right-btns" style="    font-size: 20px;
+                padding: 10px;
+                color: #2570c3;"></span>
+              </div>
+           
+          <div class="text-bar__field" id="form-message">
+            <input type="text" id="chattxt" placeholder="Type here" autocomplete="off"/>
+          </div>
+          <div class="text-bar__thumb">
+              <span  id="sendbut" class="glyphicon 	 glyphicon-chevron-right left-btns" style="    font-size: 20px;
+              padding: 10px;
+              color: #2570c3;"></span>          </div>
+        
+        </div>
+      </div>
+  </div>
+  <div id="open-modal" class="modal-window">
+    <div>
+      <a href="#" title="Close" class="modal-close">X</a>
+      <h1><input type="text" id="burl" name="url"> <input type="button" id="opnurl" onclick="opnurl();" class="btn" value=">>" /><br></h1>
+     
+        <iframe style="    height: 92%;
+        width: 100%;" id="bframe" src="" allowfullscreen></iframe>
+
+        
+      </div>
+      </div>
+  </div>
+  <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script src='https://cdn.jsdelivr.net/vue/2.0.5/vue.min.js'></script>
+<script src="https://unpkg.com/botui/build/botui.min.js"></script>
+<script type="text/javascript" src="jquery.mb.emoticons.js"></script>
+<script type="text/javascript" src="videosub.js"></script>
+<script src="https://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+<script src="jquery.ui.touch-punch.min.js"></script>
+
+  <script>
+
+    
+    function opnurl(){
+      $('#bframe').attr('src',  $("#burl").val());
+    }
+    var conn;
+
+$(window).bind('beforeunload', function(){
+  return 'Are you sure you want to leave?';
+});
+
+$(window).unload(function(){
+  conn.send(JSON.stringify({room:room,cjchat:$_("#name").value+"%%"+"Hey i just left"}));
+
+  conn.close();
+});
+    var ratio = window.devicePixelRatio || 1;
+var w = screen.width * ratio;
+var botui = new BotUI('my-botui-app');
+
+
+  var controller = null;
+  var prevpause=false;
+  var room;
+  var vidurl;
+  window.onload = function() {
+
+
+       if(localStorage.getItem('roomid')!=null){
+			room=localStorage.getItem('roomid');
+			initjoin();
+	   }else{
+	   $("#registration").css('visibility', 'visible');
+	   }
+    
+
+    $( ".cam" ).draggable({containment: "body"});
+    if ($_("#name").value == "")
+        $_("#name").value = "user"+parseInt(99999*Math.random());
+        $("#join").show();    
+    $_("#join").onclick = function() {
+	 
+	 initjoin();
+	 
+	 };
+  };
+  
+  
+  function initjoin(){
+  if(localStorage.getItem('roomid')!=null){
+			room=localStorage.getItem('roomid');
+	  }else{
+	  room=$_("#room").value;
+	  	  localStorage.setItem('roomid', room);
+
+	  }
+      $('#roomid').html(room);
+
+
+      conn = new WebSocket("wss://kalyanraju.duckdns.org:3002");
+      conn.onopen=function(){
+       
+conn.send(JSON.stringify({join:room}));
+conn.send(JSON.stringify({room:room,cjchat:$_("#name").value+"%%"+"Hey i just joined"}));
+      }
+      $_("#username").innerHTML = $_("#name").value;
+      $_("#roomtv").className = "active";
+      $_("#registration").className = "inactive";
+      var video = $_("#movie");
+      video.width=w;
+      video.src=$_("#vid").innerHTML;
+     
+$('#sendbut').bind('click',function(){
+  var chattxt=$("#chattxt").val();
+  if(chattxt!=""){
+    
+    var pm=$('<div>').append(chattxt);
+    var fm =pm.emoticonize(true);
+  botui.message.human({
+  content: fm.html()
+});
+var vm=chattxt.match(/http:\/\/[\S]+?\.mp4/g);
+var am=chattxt.match(/http:\/\/[\S]+?\.mp3/g);
+var xv=chattxt.match(/(https?:\/\/(.+?\.)?xvideos\.com(\/[A-Za-z0-9\-\._~:\/\?#\[\]@!$&'\(\)\*\+,;\=]*)?)/g);
+var ytv=ytVidId(chattxt);
+
+if(vm || am){
+  var r = confirm("You want to play this media?");
+    if (r == true) {
+      if(vm==""){
+        video.src=am;
+
+      }else{
+       
+       
+    
+video.src=vm;
+      }
+       
+      // conn.send("setvid "+vm);
+	  vidurl=vm;
+          conn.send(JSON.stringify({room:room,setvid:vm}));
+    } 
+   }
+
+  /* if(ytv){
+    var r = confirm("You want to play this youtube video?");
+    if (r == true) {
+      $.get('/getyurl?url='+ytv, function (data) {
+        video.src=data;
+			  vidurl=vm;
+
+        conn.send(JSON.stringify({room:room,setvid:data}));
+
+});
+        
+      
+       
+      // conn.send("setvid "+vm);
+    } 
+   }
+
+      if(xv){
+    var r = confirm("You want to play this porn video?");
+    if (r == true) {
+      $.get('/getxurl?url='+xv, function (data) {
+        video.src=data;
+        conn.send(JSON.stringify({room:room,setvid:data}));
+
+});
+        
+      
+       
+      // conn.send("setvid "+vm);
+    } 
+   }*/
+
+$("#chattxt").val('');
+//conn.send("cjchat "+$_("#name").value+"%%"+chattxt);
+conn.send(JSON.stringify({room:room,cjchat:$_("#name").value+"%%"+chattxt}));
+}
+});
+$("#chattxt").mbSmilesBox();
+      video.addEventListener("timeupdate", function() {
+        //if (iAmControlling()) conn.send(video.currentTime);
+        if (iAmControlling()) conn.send(JSON.stringify({room:room,setvid:vidurl,vidtime:''+parseInt(video.currentTime)+''}));
+      }, true);
+      video.addEventListener("pause", function() {
+       // if (iAmControlling()) conn.send("pause "+video.currentTime);
+       if (iAmControlling()) conn.send(JSON.stringify({room:room,setvid:vidurl,pause:video.currentTime}));
+      }, true);
+      conn.onerror=function(e){console.log(e);}
+      conn._original_send_func = conn.send;
+      conn.send = function(data) {
+         if(this.readyState == 1)
+           this._original_send_func(data);
+       }.bind(conn);
+      conn.onmessage = function (ev) {
+        var ms=JSON.parse(ev.data);
+
+       // gotMessageFromServer(ms);
+        var matches;
+        var gotmsg= JSON.parse(ms);
+        console.log(gotmsg);
+
+      if(gotmsg.v){
+      //  gotMessageFromServer(ms);
+
+        }
+
+        if (gotmsg.control) {
+          $_("#controller").innerHTML =gotmsg.control;
+        }if (gotmsg.setvid) {
+		if( video.src!=gotmsg.setvid){
+          video.src = gotmsg.setvid;
+		  //currentvid=gotmsg.setvid;
+		  //localStorage.setItem('currentvid', gotmsg.setvid);
+		  }
+        }if (gotmsg.cjchat) {
+          console.log(gotmsg.cjchat);
+          var m=gotmsg.cjchat.split("%%");
+          if(m[0]!=$_("#name").value){
+            var pm=$('<div>').append(m[1]);
+          var fm =pm.emoticonize(true);
+            botui.message.add({
+              content: fm.html()
+            });
+          }
+        }  else if (gotmsg.userCount) {
+          // $_("#userCount").innerHTML = matches[1];
+         // document.getElementById("userCount").innerHTML = matches[1];
+        } else if (gotmsg.pause) {
+          video.currentTime = gotmsg.pause;
+                    video.pause();
+                    prevpause=true;
+        } else {
+          if (iAmControlling()) return;
+          var estimatedTimeOnMaster = parseInt(gotmsg.vidtime)+1;
+          if (Math.abs(estimatedTimeOnMaster-video.currentTime)>5)
+            video.currentTime = estimatedTimeOnMaster;
+          if (video.paused && prevpause!=true){ 
+            video.play()
+            /* var playPromise = video.play();
+ 
+ if (playPromise !== undefined) {
+   playPromise.then(_ => {
+    
+     video.pause();
+   })
+   .catch(error => {
+     
+   });
+ } */
+          }else{prevpause=false};
+        }
+      };
+      $_("#takeControl").onclick = function(ev) {
+        botui.message.human({
+  content: "I am Taking Control"
+});
+    //  conn.send("cjchat "+$_("#name").value+"%%"+"I am Taking Control");
+
+    //  conn.send("control "+$_("#name").value);
+    conn.send(JSON.stringify({room:room,control:$_("#name").value,cjchat:$_("#name").value+"%%"+"I am Taking Control"}));
+      };
+      $_("#leave").onclick = function() {
+        conn.send(JSON.stringify({room:room,cjchat:$_("#name").value+"%%"+"Hey i just left"}));
+
+        conn.close();
+
+        video.pause();
+		localStorage.clear();
+
+
+       // $_("#roomtv").className = "inactive";
+      //  $_("#registration").className = "active";
+		
+		location.reload();
+
+      };
+
+       $_("#audiotogl").onclick = function() {
+        
+       /*() if(localVideo.muted){
+          localVideo.muted = false;
+    }
+    else{
+      localVideo.muted = true;
+    }*/
+    $(".videosubbar").toggle();
+      };
+      screen.orientation.addEventListener("change", function(e) {
+  if(screen.orientation.type=="portrait-primary"){
+    video.style.height="30%";
+  }
+}, false);
+      
+      $_("#fulltogl").onclick = function() {
+        openFullscreen();
+        video.style.height="100%";
+       
+      };
+    
+  }
+  
+  
+  function iAmControlling() {
+    return $_("#controller").innerHTML == $_("#name").value;
+  }
+  function $_(sel) {
+    return document.querySelector(sel);
+  }
+
+function ytVidId(url) {
+  var p = /^(?:https?:\/\/)?(?:www\.)?(?:m\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})(?:\S+)?$/;
+  return (url.match(p)) ? RegExp.$1 : false;
+}
+
+var localVideo;
+var localStream;
+var remoteVideo;
+var peerConnection;
+var uuid;
+var serverConnection;
+
+var peerConnectionConfig = {
+  'iceServers': [
+    {'urls': 'stun:stun.stunprotocol.org:3478'},
+    {'urls': 'stun:stun.l.google.com:19302'},
+  ]
+};
+
+
+function playexternalurl(url){
+  console.log("gotvidfromandroid");
+  $('#chattxt').val(url);
+  $("#sendbut").trigger("click");
+}
+
+function pageReady() {
+  uuid = createUUID();
+
+  localVideo = document.getElementById('localVideo');
+  remoteVideo = document.getElementById('remoteVideo');
+
+  //serverConnection = new WebSocket('wss://' + window.location.hostname + ':8081');
+  //serverConnection.onmessage = gotMessageFromServer;
+
+  var constraints = {
+    video: true,
+    audio: true,
+  };
+
+  if(navigator.mediaDevices.getUserMedia) {
+  //  navigator.mediaDevices.getUserMedia(constraints).then(getUserMediaSuccess).catch(errorHandler);
+  } else {
+    alert('Your browser does not support getUserMedia API');
+  }
+}
+
+function getUserMediaSuccess(stream) {
+  localStream = stream;
+  localVideo.srcObject = stream;
+}
+
+function start(isCaller) {
+  peerConnection = new RTCPeerConnection(peerConnectionConfig);
+  peerConnection.onicecandidate = gotIceCandidate;
+  peerConnection.ontrack = gotRemoteStream;
+  peerConnection.addStream(localStream);
+  remoteVideo.style.display = "block";
+  localVideo.style.display = "block";
+  if(isCaller) {
+    peerConnection.createOffer().then(createdDescription).catch(errorHandler);
+  }
+}
+
+function gotMessageFromServer(message) {
+ // if(!peerConnection) start(false);
+
+  var signal = JSON.parse(message);
+
+  // Ignore messages from ourself
+  if(signal.uuid == uuid) return;
+
+  if(signal.sdp) {
+    peerConnection.setRemoteDescription(new RTCSessionDescription(signal.sdp)).then(function() {
+      // Only create answers in response to offers
+      if(signal.sdp.type == 'offer') {
+        peerConnection.createAnswer().then(createdDescription).catch(errorHandler);
+      }
+    }).catch(errorHandler);
+  } else if(signal.ice) {
+    peerConnection.addIceCandidate(new RTCIceCandidate(signal.ice)).catch(errorHandler);
+  }
+
+}
+
+function gotIceCandidate(event) {
+  if(event.candidate != null) {
+    conn.send(JSON.stringify({room:room,'v':1,'ice': event.candidate, 'uuid': uuid}));
+  }
+}
+
+function createdDescription(description) {
+  //console.log('got description');
+
+  peerConnection.setLocalDescription(description).then(function() {
+    conn.send(JSON.stringify({room:room,'v':1,'sdp': peerConnection.localDescription, 'uuid': uuid}));
+  }).catch(errorHandler);
+}
+
+function gotRemoteStream(event) {
+  //console.log('got remote stream');
+  remoteVideo.srcObject = event.streams[0];
+  remoteVideo.style.display = "block";
+}
+
+function errorHandler(error) {
+  console.log(error);
+}
+
+function connect(){
+  localStorage.setItem('key', 'value');
+
+}
+
+// Taken from http://stackoverflow.com/a/105074/515584
+// Strictly speaking, it's not a real UUID, but it gets the job done here
+function createUUID() {
+  function s4() {
+    return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
+  }
+
+  return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
+}
+  </script>
+<script>
+  pageReady();
+  var elem = document.getElementById("vidcont");
+function openFullscreen() {
+  if (elem.requestFullscreen) {
+    elem.requestFullscreen();
+  } else if (elem.mozRequestFullScreen) { /* Firefox */
+    elem.mozRequestFullScreen();
+  } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari & Opera */
+    elem.webkitRequestFullscreen();
+  } else if (elem.msRequestFullscreen) { /* IE/Edge */
+    elem.msRequestFullscreen();
+  }
+}
+
+ 
+</script> 
+<style>
+    .botui-container{
+      background-color:#333 !important;
+      opacity: 0.9;
+    }
+  </style>
+</body>
+  </html>
