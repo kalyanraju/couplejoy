@@ -9,8 +9,8 @@ const https = require('https');
 
 
 var app = express()
-var redirectToHTTPS = require('express-http-to-https').redirectToHTTPS;
-app.use(redirectToHTTPS([/localhost:(\d{4})/], [/\/insecure/], 301));
+//var redirectToHTTPS = require('express-http-to-https').redirectToHTTPS;
+//app.use(redirectToHTTPS([/localhost:(\d{4})/], [/\/insecure/], 301));
 app.listen(80, function () {
   console.log('Example app listening on port 8080 insecurely!');
 });
