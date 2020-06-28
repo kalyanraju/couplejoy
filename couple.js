@@ -21,7 +21,7 @@ app.listen(80, function () {
 })*/
 var WebSocket = require('ws');
 var WebSocketServer = require('ws').Server,
-  wss = new WebSocketServer({server: app})
+  wss = new WebSocketServer({app})
   var userCount = [];
 
   wss.broadcast = function broadcast(data) {
