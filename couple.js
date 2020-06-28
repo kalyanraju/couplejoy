@@ -11,7 +11,7 @@ const https = require('https');
 var app = express()
 //var redirectToHTTPS = require('express-http-to-https').redirectToHTTPS;
 //app.use(redirectToHTTPS([/localhost:(\d{4})/], [/\/insecure/], 301));
-app.listen(3000, function () {
+app.listen(80, function () {
   console.log('Example app listening on port 8080 insecurely!');
 });
 //var httpsServer = https.createServer(serverConfig, app);
@@ -21,7 +21,7 @@ app.listen(3000, function () {
 })*/
 var WebSocket = require('ws');
 var WebSocketServer = require('ws').Server,
-  wss = new WebSocketServer({server: app, path:"/ws"})
+  wss = new WebSocketServer({server: app})
   var userCount = [];
 
   wss.broadcast = function broadcast(data) {
